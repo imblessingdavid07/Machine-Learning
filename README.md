@@ -19,14 +19,6 @@
    - [Random Forest](#random-forest)  
    - [XGBoost](#xgboost)  
    - [Cross‐Validation](#cross-validation)  
-7. [Evaluation & Visualization](#evaluation--visualization)  
-   - [Random Forest Results](#random-forest-results)  
-   - [XGBoost Results](#xgboost-results)  
-   - [Learning & ROC Curves](#learning--roc-curves)  
-8. [Repository Structure](#repository-structure)  
-9. [Usage & Reproduction](#usage--reproduction)  
-10. [References](#references)  
-11. [License](#license)  
 
 ---
 
@@ -146,15 +138,15 @@ We trained two tree-based classifiers: Random Forest and XGBoost. Both were tune
   - `criterion='gini'` (default)  
   - Probability threshold adjusted from 0.50→0.27 (to boost recall on class 1).  
 - **Cross-Validation F1**: Average ≈ 0.65 (fold scores: 0.6601, 0.6723, 0.6803, 0.6055, 0.6519).   
-- **Training Code Snippet**:  
-  ```python
-  from sklearn.ensemble import RandomForestClassifier
-  rf = RandomForestClassifier(
-      n_estimators=80,
-      criterion='gini',
-      random_state=42
-  )
-  rf.fit(X_train_resampled, y_train_resampled)
-  # Adjust threshold:
-  y_prob = rf.predict_proba(X_test)[:,1]
-  y_pred = (y_prob > 0.27).astype(int)
+### XGBoost
+- **Resampling**: Similarly applied SMOTE to the 80 % train set.
+- **Hyperparameters**:
+  - `n_estimators=300`  
+  - `learning_rate=0.2` 
+  - `max_depth=7`
+  - `subsample=0.80 (rows), colsample_bytree=0.80 (features)`
+  - `objective='binary:logistic', eval_metric='logloss'`
+  - Probability threshold adjusted from 0.50→0.063.
+- **Cross-Validation F1**: Average ≈ 0.69 (fold scores: 0.7138, 0.6886, 0.7240, 0.6649, 0.6734).
+
+
