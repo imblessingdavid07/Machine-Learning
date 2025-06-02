@@ -1,4 +1,4 @@
-> A repository demonstrating end-to-end development of a bankruptcy prediction pipeline (Random Forest & XGBoost), including cloud feasibility analysis, data preprocessing, feature selection, model training, and evaluation.  
+> A repository demonstrating end-to-end development of a bankruptcy prediction pipeline (Random Forest & XGBoost), including cloud feasibility analysis, data preprocessing, feature selection, model training, and evaluation. The bankruptcy prediction is carried out with the dataset Company_House_Info (1).
 >
 > Coursework for LD7187: ML on Cloud
 
